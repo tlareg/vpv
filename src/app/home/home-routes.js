@@ -1,4 +1,4 @@
-routes.$inject = ['$stateProvider'];
+// routes.$inject = ['$stateProvider'];
 
 export default function routes($stateProvider) {
   'ngInject';
