@@ -1,5 +1,3 @@
-// appRouting.$inject = ['$urlRouterProvider', '$locationProvider'];
-
 export default function appRouting($urlRouterProvider, $locationProvider) {
   'ngInject';
 
