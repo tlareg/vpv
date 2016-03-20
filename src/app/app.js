@@ -7,12 +7,14 @@ import AppCtrl from './app-controller';
 import appRouting from './app-routing'
 import navbarModule from './navbar/navbar-module';
 import homeModule from './home/home-module';
+import demosModule from './demos/demos-module';
 
 export default angular
   .module('app', [
     uirouter,
     navbarModule,
-    homeModule
+    homeModule,
+    demosModule
   ])
   .config(appRouting)
   .component('app', {
