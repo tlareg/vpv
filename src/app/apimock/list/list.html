@@ -1,0 +1,53 @@
+<div class="vpv-view">
+  <div class="container">
+
+    <div class="row">
+      <h1 class="col-xs-3 vpv-view-title">API mock list</h1>
+      <div class="col-xs-9" style="padding-top: 20px;">
+        <div class="pull-right">
+          <button class="btn" ui-sref="apimock.item">Add</button>
+          <button class="btn" ng-click="amListCtrl.export()">Export</button>
+          <div class="input-group" style="width: 300px; float: right; margin-left: 5px;">
+            <input on-read-file="amListCtrl.onReadImportFile($fileContent)"
+              type="file"
+              class="form-control">
+            <span class="input-group-btn">
+              <button ng-click="amListCtrl.import()" class="btn" type="button">Import</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <ul class="api-mock-list">
+        <li class="api-mock-list-item"
+          style="position: relative;"
+          ng-repeat="item in amListCtrl.list | orderBy:'guid'">
+          <div class="apimock-list-item__actions">
+            <button ui-sref="apimock.item({ guid: item.guid })"
+              class="btn">Edit</button>
+            <button
+              ng-click="amListCtrl.removeItem(item)"
+              class="btn">Remove</button>
+          </div>
+          <div class="api-mock-list-item__pair">
+            <div class="api-mock-list-item__key">Url</div>
+            <div class="api-mock-list-item__value">{{item.url}}</div>
+          </div>
+          <div class="api-mock-list-item__pair">
+            <div class="api-mock-list-item__key">Method</div>
+            <div class="api-mock-list-item__value">{{item.method}}</div>
+          </div>
+          <div class="api-mock-list-item__pair">
+            <div class="api-mock-list-item__key">Response</div>
+            <div class="api-mock-list-item__value">
+              <pre>{{item.response}}</pre>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="vpv-view">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <h1 class="vpv-view-title">API mock item</h1>
+
+        <form name="apimockItemForm"
+          ng-submit="amItemCtrl.submit()">
+
+          <div class="form-group">
+            <label for="url">Url</label>
+            <input type="text"
+            id="url"
+            name="url"
+            ng-model="amItemCtrl.formData.url"
+            class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="method">Method</label>
+            <select
+            class="form-control"
+            name="method"
+            ng-model="amItemCtrl.formData.method"
+            ng-options="val for val in ['GET', 'POST', 'PUT', 'DELETE']"
+            id="method"></select>
+          </div>
+
+          <div class="form-group">
+            <label for="response">Response</label>
+            <textarea type="text"
+            rows="10"
+            id="response"
+            name="response"
+            ng-model="amItemCtrl.formData.response"
+            class="form-control"></textarea>
+          </div>
+
+          <input type="submit"
+            id="submit"
+            value="Submit"
+            class="btn btn-primary btn-default"/>
+          <button class="btn" type="button"
+            ui-sref="apimock.list">Back to list</button>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

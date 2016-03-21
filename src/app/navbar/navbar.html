@@ -27,10 +27,10 @@
             data-toggle="dropdown"
             role="button"
             aria-haspopup="true"
-            aria-expanded="false">xAPI mock <span class="caret"></span></a>
+            aria-expanded="false">API mock <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">endpoints</a></li>
-            <li><a href="#">add endpoint</a></li>
+            <li><a ui-sref="apimock.list">list</a></li>
+            <li><a ui-sref="apimock.item({ guid: '' })" ui-sref-opts="{ reload: true, notify: true }">add</a></li>
           </ul>
         </li>
 
