@@ -5,6 +5,7 @@
 1. Install nodeJS and npm
 
 2. Install node-gyp
+
     ```sh
     npm install -g node-gyp
     npm install -g --production windows-build-tools
@@ -48,12 +49,15 @@
 - setup *LL* database
   - run ```mongod``` (can pass ```--dbpath="your\data\dir"```)
   - in second terminal run
+  
       ```sh
       mongo
       use learningLockerDBName
       db.createUser( { user: "userName", pwd: "password", roles: [ "readWrite" ] } );
       ```
+      
   - create ```app/config/local/database.php``` file 
+  
       ```php
       <?php
       return [
@@ -69,14 +73,17 @@
           ]
       ];
       ```
+      
   - run ```php artisan migrate```
 - create ```app/config/local/app.php``` file 
+
     ```php
     <?php
     return [
         'key' => 'YOUR_SECRET_KEY0'
     ];
     ```
+    
     [use key of size 16, 24, or 32](https://github.com/LearningLocker/learninglocker/issues/488)
 - open in browser ```localhost/learninglocker/public/register``` and register admin user
 - verify registered admin user - go to "Users" tab (```http://localhost/learninglocker/public/site#users```) and click on "verified"
