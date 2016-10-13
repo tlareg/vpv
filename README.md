@@ -2,9 +2,9 @@
 
 ### Installation
 
-1. Install nodeJS and npm
+1. Install **nodeJS** and **npm**
 
-2. Install node-gyp
+2. Install **node-gyp**
 
     ```sh
     npm install -g node-gyp
@@ -13,9 +13,9 @@
     
 3. Install npm dependencies ``` npm install ```
 
-4. Run webpack-dev-server for development ``` npm start ```
+4. Run webpack-dev-server for **development** ``` npm start ```
 
-5. Build for production ``` npm run build ```
+5. Build for **production** ``` npm run build ```
 
 ## Integration tips
 
@@ -87,3 +87,15 @@
     [use key of size 16, 24, or 32](https://github.com/LearningLocker/learninglocker/issues/488)
 - open in browser ```localhost/learninglocker/public/register``` and register admin user
 - verify registered admin user - go to "Users" tab (```http://localhost/learninglocker/public/site#users```) and click on "verified"
+
+### Open Labyrinth and Learning Locker connection
+(Tested on *OL v3.3.1* and *LL v1.13.5*)
+
+- open **Learning Locker** site
+  - on navigation click **LRSs**, then **Create an LRS**, fill and submit form
+  - click on new LRS title, then **Manage clients** and **Create client**
+  - remember endpoint and new client credentials
+- open **Open Labyrinth** site
+  - on navigation go to **Tools > LRS**, then click **Add LRS**
+  - fill form using Learning Locker endpoint and created client credentials (remember to set **Enable: Yes**)
+  - in specific labyrinth details set **Send xAPI statements in real-time: Yes**
