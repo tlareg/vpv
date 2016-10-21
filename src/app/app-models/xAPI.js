@@ -5,13 +5,11 @@ class Statement {
 }
 
 class LRS {
-  constructor(lrsData) {
-    Object.assign(this, {
-      guid: getGuid()
-    }, LRS.clone(lrsData));
+  constructor(lrs) {
+    this.import(lrs);
   }
 
-  static clone(lrs) {
+  static export(lrs) {
     return [
       'guid',
       'name',
@@ -27,8 +25,14 @@ class LRS {
     }, {});
   }
 
-  clone() {
-    return LRS.clone(this);
+  export() {
+    return LRS.export(this);
+  }
+
+  import(lrs) {
+    Object.assign(this, {
+      guid: getGuid()
+    }, LRS.export(lrs));
   }
 }
 
@@ -43,7 +47,7 @@ class LRSList {
 
   getByGuid(guid) {
     const foundLrs = this.list.filter(lrs => lrs.guid === guid)[0];
-    return foundLrs ? foundLrs.clone() : null;
+    return foundLrs ? foundLrs.export() : null;
   }
 
   add(lrs) {
@@ -57,6 +61,25 @@ class LRSList {
 
   remove(lrsData) {
     this.list = this.list.filter(lrs => lrs.guid !== lrsData.guid);
+  }
+
+  static export(lrsList) {
+    return {
+      list: lrsList.list.map(lrs => (lrs instanceof LRS) ? lrs.export() : lrs)
+    };
+  }
+
+  export() {
+    return LRSList.export(this);
+  }
+
+  import(lrsList) {
+    this.list = [];
+    if (!lrsList) return;
+    LRSList
+      .export(lrsList)
+      .list
+      .forEach(lrs => this.add(lrs));
   }
 }
 

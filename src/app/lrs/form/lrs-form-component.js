@@ -6,11 +6,13 @@ class LRSFormCtrl {
   constructor(
     $state,
     $stateParams,
-    xAPI
+    xAPI,
+    storageHelper,
   ) {
     'ngInject';
 
     this.xAPI = xAPI;
+    this.storageHelper = storageHelper;
     this.$state = $state;
     this.$stateParams = $stateParams;
     this.initFormData();
@@ -32,6 +34,7 @@ class LRSFormCtrl {
     } else {
       this.xAPI.LRS.add(formData);
     }
+    this.storageHelper.set('xAPI.LRSList', this.xAPI.LRS.export());
     this.$state.go('lrs.list');
   }
 }

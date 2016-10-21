@@ -18,8 +18,10 @@ import apimockModule from './apimock/apimock-module';
 import lrsModule from './lrs/lrs-module';
 
 import xAPI from './app-models/xAPI';
+import storageHelper from './app-models/storage-helper';
 
 export default angular
+
   .module('app', [
     uirouter,
     appServices,
@@ -30,11 +32,16 @@ export default angular
     apimockModule,
     lrsModule,
   ])
+
   .config(appRouting)
+
   .constant('xAPI', xAPI)
+  .constant('storageHelper', storageHelper)
+
   .component('app', {
     template: appTemplate,
     controller: AppCtrl,
     controllerAs: 'appCtrl'
   })
+  
   .name;
