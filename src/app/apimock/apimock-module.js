@@ -1,4 +1,3 @@
-import './apimock.css';
 import angular from 'angular';
 import routes from './apimock-routes';
 import listComponent from './list/apimock-list-component';

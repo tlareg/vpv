@@ -100,3 +100,5 @@
   - fill form using Learning Locker endpoint and created client credentials (remember to set **Enable: Yes**)
   - in specific labyrinth details set **Send xAPI statements in real-time: Yes**
 - more: [Connecting-an-LRS-to-OLab.docx](http://openlabyrinth.ca/wp-content/uploads/2016/07/Connecting-an-LRS-to-OLab.docx)
+
+### VPV and Learning Locker connection

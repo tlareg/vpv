@@ -28,9 +28,10 @@ export default class ApimockService {
     }
     if (!item.guid) {
       this.addItem(item);
+    } else {
+      this.removeItem(item);
+      this.list.push(item);
     }
-    this.removeItem(item);
-    this.list.push(item);
     this.sortList();
   }
 

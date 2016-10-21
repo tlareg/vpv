@@ -1,0 +1,50 @@
+<div class="vpv-view">
+  <div class="container">
+
+    <div class="row">
+      <h1 class="col-xs-3 vpv-view-title">LRS list</h1>
+      <div class="col-xs-9" style="padding-top: 20px;">
+        <div class="pull-right">
+          <button class="btn" ui-sref="lrs.form({ guid: '' })">Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <ul class="vpv-list vpv-list-flex"> 
+        <li
+          class="vpv-list-item"
+          ng-repeat="lrs in lrsListCtrl.list">
+          <div class="vpv-list-item__pair">
+            <div class="vpv-list-item__key">Name</div>
+            <div class="vpv-list-item__value">{{lrs.name}}</div>
+          </div>
+          <div class="vpv-list-item__pair">
+            <div class="vpv-list-item__key">URL</div>
+            <div class="vpv-list-item__value">{{lrs.url}}</div>
+          </div>
+          <div class="vpv-list-item__pair">
+            <div class="vpv-list-item__key">Username</div>
+            <div class="vpv-list-item__value">{{lrs.username}}</div>
+          </div>
+          <div class="vpv-list-item__pair">
+            <div class="vpv-list-item__key">Password</div>
+            <div class="vpv-list-item__value">{{lrs.password}}</div>
+          </div>
+          <div class="vpv-list-item__pair">
+            <div class="vpv-list-item__key">xAPI Version</div>
+            <div class="vpv-list-item__value">{{lrs.xAPIVersion}}</div>
+          </div>
+          <div class="vpv-list-item__actions">
+            <button ui-sref="lrs.form({ guid: lrs.guid })"
+              class="btn">Edit</button>
+            <button
+              ng-click="lrsListCtrl.removeLRS(lrs)"
+              class="btn">Remove</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>

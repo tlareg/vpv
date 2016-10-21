@@ -1,0 +1,70 @@
+<div class="vpv-view">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <h1 class="vpv-view-title">LRS</h1>
+
+        <form name="lrsForm"
+          ng-submit="lrsFormCtrl.submit()">
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text"
+              id="name"
+              name="name"
+              ng-model="lrsFormCtrl.formData.name"
+              class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="url">URL</label>
+            <input type="text"
+              id="url"
+              name="url"
+              ng-model="lrsFormCtrl.formData.url"
+              class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text"
+              id="username"
+              name="username"
+              ng-model="lrsFormCtrl.formData.username"
+              class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text"
+              id="password"
+              name="password"
+              ng-model="lrsFormCtrl.formData.password"
+              class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="xAPIVersion">xAPI Version</label>
+            <select name="xAPIVersion" 
+              id="xAPIVersion" 
+              ng-model="lrsFormCtrl.formData.xAPIVersion"
+              class="form-control">
+              <option ng-repeat="v in ['1.0.0', '1.0.1']" value="{{v}}">{{v}}</option>
+            </select>
+          </div>
+
+          <input type="submit"
+            id="submit"
+            value="Submit"
+            class="btn btn-primary btn-default"/>
+          <button class="btn" type="button"
+            ui-sref="lrs.list">Back to list</button>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
