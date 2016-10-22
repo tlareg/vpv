@@ -1,17 +1,26 @@
 import _ from 'lodash';
 
 export default class ApimockService {
-  constructor($window, guidService) {
+  constructor($window, guidService, storageHelper) {
     'ngInject';
 
     this.$window = $window;
     this.guidService = guidService;
+    this.storageHelper = storageHelper;
 
     this.list = [];
   }
 
   getList() {
+    this.list = (this.storageHelper.get('apimock') || {}).list || [];
     return this.list;
+  }
+
+  onListChange() {
+    this.list = _.sortBy(this.list, 'guid');
+    this.storageHelper.set('apimock', { 
+      list: this.getListForExport()
+    });
   }
 
   addItem(item) {
@@ -19,7 +28,7 @@ export default class ApimockService {
       item.guid = this.guidService.getGuid();
     }
     this.list.push(item);
-    this.sortList();
+    this.onListChange();
   }
 
   updateItem(item) {
@@ -31,8 +40,8 @@ export default class ApimockService {
     } else {
       this.removeItem(item);
       this.list.push(item);
+      this.onListChange();
     }
-    this.sortList();
   }
 
   findItemByGuid(guid) {
@@ -47,11 +56,7 @@ export default class ApimockService {
     _.remove(this.list, (i) => {
       return i.guid === guid;
     });
-    this.sortList();
-  }
-
-  sortList() {
-    _.sortBy(this.list, 'guid');
+    this.onListChange();
   }
 
   export() {
@@ -87,6 +92,7 @@ export default class ApimockService {
       return;
     }
     this.list = contentJSON;
+    this.onListChange();
     return this.list;
   }
 }
