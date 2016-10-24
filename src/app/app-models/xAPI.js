@@ -16,7 +16,8 @@ class LRS {
       'url',
       'username',
       'password',
-      'xAPIVersion'
+      'xAPIVersion',
+      'httpBasicAuth'
     ].reduce((acc, propName) => { 
       if (lrs[propName]) {
         acc[propName] = lrs[propName];
@@ -31,8 +32,10 @@ class LRS {
 
   import(lrs) {
     Object.assign(this, {
-      guid: getGuid()
+      guid: getGuid(),
     }, LRS.export(lrs));
+
+    this.httpBasicAuth = createHttpBasicAuth(this.username, this.password);
   }
 }
 
@@ -93,8 +96,12 @@ function getGuid() {
     s4() + '-' + s4() + s4() + s4();
 }
 
+function createHttpBasicAuth(username, password) {
+  return btoa(`${username}:${password}`);
+}
 
 const xAPI = {};
+
 xAPI.LRS = new LRSList();
 
 export default xAPI;
