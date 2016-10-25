@@ -170,8 +170,10 @@ module.exports = function makeWebpackConfig () {
     // Render index.html
     config.plugins.push(
       new HtmlWebpackPlugin({
-        template: './src/public/index.html',
-        inject: 'body'
+        template: './src/public/index.ejs',
+        inject: 'body',
+        favicon: './src/public/img/favicon.ico',
+        baseUrl: config.output.publicPath,
       }),
 
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
