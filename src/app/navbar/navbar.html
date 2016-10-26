@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-top navbar-inverse">
+<nav class="navbar navbar-fixed-top navbar-inverse vpv-navbar">
   <div class="container">
 
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -9,7 +9,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ui-sref="home">VP Vis</a>
+      <a class="navbar-brand" ui-sref="home">
+        <span class="glyphicon glyphicon-education"></span> VP Vis
+      </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -19,7 +21,8 @@
 
       <ul class="nav navbar-nav navbar-right">
 
-        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="home"><span class="vpv-icon glyphicon glyphicon-home"></span>Home</a></li>
+        <li><a ui-sref="statements"><span class="vpv-icon glyphicon glyphicon-list-alt"></span>Statements</a></li>
 
         <li class="dropdown">
           <a ng-click="$event.preventDefault()"
@@ -27,10 +30,20 @@
             data-toggle="dropdown"
             role="button"
             aria-haspopup="true"
-            aria-expanded="false">LRS <span class="caret"></span></a>
+            aria-expanded="false"><span class="vpv-icon glyphicon glyphicon-hdd"></span>LRS <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a ui-sref="lrs.list">list</a></li>
-            <li><a ui-sref="lrs.form({ guid: '' })" ui-sref-opts="{ reload: true, notify: true }">add</a></li>
+            <li>
+              <a ui-sref="lrs.list">
+                <span class="vpv-icon glyphicon glyphicon-list"></span>
+                <span>list</span>
+              </a>
+            </li>
+            <li>
+              <a ui-sref="lrs.form({ guid: '' })" ui-sref-opts="{ reload: true, notify: true }">
+                <span class="vpv-icon glyphicon glyphicon-plus"></span>
+                <span>add</span>
+              </a>
+            </li>
           </ul>
         </li>
 
@@ -40,10 +53,20 @@
             data-toggle="dropdown"
             role="button"
             aria-haspopup="true"
-            aria-expanded="false">API mock <span class="caret"></span></a>
+            aria-expanded="false"><span class="vpv-icon glyphicon glyphicon-wrench"></span>API mock <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a ui-sref="apimock.list">list</a></li>
-            <li><a ui-sref="apimock.item({ guid: '' })" ui-sref-opts="{ reload: true, notify: true }">add</a></li>
+            <li>
+              <a ui-sref="apimock.list">
+                <span class="vpv-icon glyphicon glyphicon-list"></span>
+                <span>list</span>
+              </a>
+            </li>
+            <li>
+              <a ui-sref="apimock.item({ guid: '' })" ui-sref-opts="{ reload: true, notify: true }">
+                <span class="vpv-icon glyphicon glyphicon-plus"></span>
+                <span>add</span>
+              </a>
+            </li>
           </ul>
         </li>
 
@@ -53,7 +76,7 @@
             data-toggle="dropdown"
             role="button"
             aria-haspopup="true"
-            aria-expanded="false">Libs demos <span class="caret"></span></a>
+            aria-expanded="false"><span class="vpv-icon glyphicon glyphicon-book"></span>Libs demos <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a ui-sref="demos.d3">d3.js</a></li>
             <li><a ui-sref="demos.chartjs">chart.js</a></li>

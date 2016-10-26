@@ -16,6 +16,7 @@ import homeModule from './home/home-module';
 import demosModule from './demos/demos-module';
 import apimockModule from './apimock/apimock-module';
 import lrsModule from './lrs/lrs-module';
+import statementsModule from './statements/statements-module';
 
 import xAPI from './app-models/xAPI';
 import storageHelper from './app-models/storage-helper';
@@ -31,6 +32,7 @@ export default angular
     demosModule,
     apimockModule,
     lrsModule,
+    statementsModule
   ])
 
   .config(appRouting)
