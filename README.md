@@ -1,5 +1,9 @@
 # Virtual Patient Visualizations
 
+Visualizations for learning analytics of virtual patients.
+
+See [DEMO](https://tlareg.github.io/vpv)
+
 ### Installation
 
 1. Install **nodeJS** and **npm**
