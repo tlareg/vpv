@@ -5,10 +5,10 @@
       <h1 class="col-sm-3 vpv-view-title">LRS list</h1>
       <div class="col-sm-9" style="padding-top: 20px;">
         <div class="pull-right">
-          <button class="btn" ui-sref="lrs.form({ guid: '' })">
+          <button class="btn btn-default" ui-sref="lrs.form({ guid: '' })">
             <span class="glyphicon glyphicon-plus"></span> Add
           </button>
-          <button class="btn" ng-click="lrsListCtrl.export()">
+          <button class="btn btn-default" ng-click="lrsListCtrl.export()">
             <span class="glyphicon glyphicon-export"></span> Export
           </button>
           <div class="input-group" style="width: 300px; float: right; margin-left: 5px;">
@@ -16,7 +16,7 @@
               type="file"
               class="form-control">
             <span class="input-group-btn">
-              <button ng-click="lrsListCtrl.import()" class="btn" type="button">
+              <button ng-click="lrsListCtrl.import()" class="btn btn-default" type="button">
                 <span class="glyphicon glyphicon-import"></span> Import
               </button>
             </span>
