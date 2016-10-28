@@ -21,7 +21,8 @@ class LRSFormCtrl {
   initFormData() {  
     const guid = this.$stateParams.guid;
     if (guid) {
-      this.formData = this.xAPI.LRS.getByGuid(guid) || {};
+      const lrs = this.xAPI.LRS.getByGuid(guid);
+      this.formData = lrs && lrs.export() || {};
     } else {
       this.formData = {};
     }

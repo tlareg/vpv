@@ -8,7 +8,6 @@ class LRSListCtrl {
     this.xAPI = xAPI;
     this.storageHelper = storageHelper;
 
-    this.xAPI.LRS.import(this.storageHelper.get('xAPI.LRSList'));
     this.refreshList();
   }
 

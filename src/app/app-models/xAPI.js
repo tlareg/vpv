@@ -35,7 +35,32 @@ class LRS {
       guid: getGuid(),
     }, LRS.export(lrs));
 
+    this.url = typeof this.url === 'string' 
+      ? (this.url.slice(-1) === '/' ? this.url.slice(0, -1) : this.url)
+      : '';
+
     this.httpBasicAuth = createHttpBasicAuth(this.username, this.password);
+  }
+
+  fetchStatements() {
+    return fetch(this.url + '/statements', {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'default',
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Authorization': `Basic ${this.httpBasicAuth}`,
+        'X-Experience-API-Version': this.xAPIVersion
+      })
+    }).then((response) => {
+      return response.json().then(json => {
+        return json 
+          ? (json.statements || [])
+          : []; 
+      });
+    }).catch(e => {
+      alert(e);
+    });
   }
 }
 
@@ -50,7 +75,7 @@ class LRSList {
 
   getByGuid(guid) {
     const foundLrs = this.list.filter(lrs => lrs.guid === guid)[0];
-    return foundLrs ? foundLrs.export() : null;
+    return foundLrs || null;
   }
 
   add(lrs) {

@@ -21,6 +21,10 @@ import statementsModule from './statements/statements-module';
 import xAPI from './app-models/xAPI';
 import storageHelper from './app-models/storage-helper';
 
+
+xAPI.LRS.import(storageHelper.get('xAPI.LRSList'));
+
+
 export default angular
 
   .module('app', [
