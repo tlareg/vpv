@@ -106,3 +106,9 @@ See [DEMO](https://tlareg.github.io/vpv)
 - more: [Connecting-an-LRS-to-OLab.docx](http://openlabyrinth.ca/wp-content/uploads/2016/07/Connecting-an-LRS-to-OLab.docx)
 
 ### VPV and Learning Locker connection
+
+- open **Learning Locker** site
+  - create new LRS client
+- open **VPV** site
+  - on navigation go to LRS > add
+  - fill form using Learning Locker endpoint and created client credentials
