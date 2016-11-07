@@ -6,20 +6,20 @@ See [DEMO](https://tlareg.github.io/vpv)
 
 ### Installation
 
-1. Install **nodeJS** and **npm**
+1. Install [nodeJS](https://nodejs.org/) and [yarn](https://yarnpkg.com/)
 
-2. Install **node-gyp**
+2. Install [node-gyp](https://github.com/nodejs/node-gyp)
 
     ```sh
-    npm install -g node-gyp
-    npm install -g --production windows-build-tools
+    yarn global add node-gyp
+    yarn global add --production windows-build-tools
     ```
     
-3. Install npm dependencies ``` npm install ```
+3. Install node modules ``` yarn install ```
 
-4. Run webpack-dev-server for **development** ``` npm start ```
+4. Run webpack-dev-server for **development** ``` yarn run dev ```
 
-5. Build for **production** ``` npm run build ```
+5. Build for **production** ``` yarn run build ```
 
 ## Integration tips
 
