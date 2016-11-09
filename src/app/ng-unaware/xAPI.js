@@ -1,9 +1,3 @@
-class Statement {
-  constructor() {
-
-  }
-}
-
 class LRS {
   constructor(lrs) {
     this.import(lrs);
@@ -52,15 +46,25 @@ class LRS {
         'Authorization': `Basic ${this.httpBasicAuth}`,
         'X-Experience-API-Version': this.xAPIVersion
       })
-    }).then((response) => {
-      return response.json().then(json => {
-        return json 
-          ? (json.statements || [])
-          : []; 
-      });
-    }).catch(e => {
-      alert(e);
-    });
+    })
+      .then(response => response.json())
+      .then(json => json 
+        ? this.setStatements(json.statements) 
+        : this.clearStatements()
+      )
+      .catch(e => this.clearStatements())
+  }
+
+  setStatements(statements) {
+    return this._statements = statements || [];
+  }
+
+  getStatements() {
+    return this._statements;
+  }
+
+  clearStatements() {
+    return this.setStatements([]);
   }
 }
 

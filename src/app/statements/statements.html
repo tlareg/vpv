@@ -12,6 +12,7 @@
             <label for="selectedLRS">Select LRS: </label>
             <select name="selectedLRS" 
               ng-model="statementsCtrl.selectedLrsGuid"
+              ng-change="statementsCtrl.onSelectedLrsChange()"
               class="form-control">
               <option ng-repeat="lrs in statementsCtrl.lrsList" value="{{lrs.guid}}">{{lrs.name}}</option>
             </select>
@@ -28,7 +29,29 @@
     </div>
 
     <div class="row" ng-if="statementsCtrl.statements.length">
-      <pre>{{ statementsCtrl.statements | json }}</pre>
+      <div ng-repeat="statement in statementsCtrl.statements">
+
+        <div>
+          <div>Time</div>
+          <div>{{statement.timestamp}}</div>
+        </div>
+
+        <div>
+          <div>Actor</div>
+          <div>{{statement.actor.name}}</div>
+        </div>
+
+        <div>
+          <div>Verb</div>
+          <div>{{statement.verb.display['en-US']}}</div>
+        </div>
+
+        <div>
+          <div>Object</div>
+          <div>{{statement.object.definition.name['en-US']}}</div>
+        </div>
+
+      </div>
     </div>
 
   </div>
