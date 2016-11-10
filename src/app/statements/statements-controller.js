@@ -1,10 +1,17 @@
 export default class StatementsCtrl {
-  constructor($scope, xAPI, spinnerHelper) {
+  constructor(
+    $scope, 
+    xAPI, 
+    spinnerHelper,
+    confirmationHelper
+  ) {
     'ngInject';
 
     this.$scope = $scope;
     this.xAPI = xAPI;
     this.spinnerHelper = spinnerHelper;
+    this.confirmationHelper = confirmationHelper;
+
     this.lrsList = xAPI.LRS.export().list;
 
     this._selectFirstLrs();    
@@ -32,7 +39,11 @@ export default class StatementsCtrl {
         this.spinnerHelper.stopAppSpinner();
       })
       .catch(() => {
+        this.$scope.$apply(() => {
+          this.statements = [];
+        });
         this.spinnerHelper.stopAppSpinner();
+        this.confirmationHelper.confirmError();
       });
   }
 

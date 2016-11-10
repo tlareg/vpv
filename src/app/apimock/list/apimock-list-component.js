@@ -1,15 +1,30 @@
 import listTemplate from './list.html';
 
 class ApimockListCtrl {
-  constructor(apimockService) {
+  constructor($scope, apimockService, confirmationHelper) {
     'ngInject';
 
+    this.$scope = $scope;
     this.apimockService = apimockService;
+    this.confirmationHelper = confirmationHelper;
+
+    this.refreshList();
+  }
+
+  refreshList() {
     this.list = this.apimockService.getList();
   }
 
   removeItem(item) {
-    this.apimockService.removeItem(item);
+    this.confirmationHelper
+      .confirmAction()
+      .then(() => {
+        this.$scope.$apply(() => {
+          this.apimockService.removeItem(item);
+          this.refreshList();
+        });
+      })
+      .catch(() => {});
   }
 
   export() {

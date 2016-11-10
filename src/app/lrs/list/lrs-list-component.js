@@ -1,12 +1,14 @@
 import lrsListTemplate from './lrs-list.html';
 
 class LRSListCtrl {
-  constructor($window, xAPI, storageHelper) {
+  constructor($scope, $window, xAPI, storageHelper, confirmationHelper) {
     'ngInject';
 
+    this.$scope = $scope;
     this.$window = $window;
     this.xAPI = xAPI;
     this.storageHelper = storageHelper;
+    this.confirmationHelper = confirmationHelper;
 
     this.refreshList();
   }
@@ -21,8 +23,15 @@ class LRSListCtrl {
   }
 
   removeLRS(lrs) {
-    this.xAPI.LRS.remove(lrs);
-    this.onListChange();
+    this.confirmationHelper
+      .confirmAction()
+      .then(() => {
+        this.$scope.$apply(() => {
+          this.xAPI.LRS.remove(lrs);
+          this.onListChange();
+        });
+      })
+      .catch(() => {});
   }
 
   export() {

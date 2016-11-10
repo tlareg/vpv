@@ -51,8 +51,7 @@ class LRS {
       .then(json => json 
         ? this.setStatements(json.statements) 
         : this.clearStatements()
-      )
-      .catch(e => this.clearStatements())
+      );
   }
 
   setStatements(statements) {
