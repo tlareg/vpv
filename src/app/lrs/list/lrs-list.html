@@ -16,7 +16,10 @@
               type="file"
               class="form-control">
             <span class="input-group-btn">
-              <button ng-click="lrsListCtrl.import()" class="btn btn-default" type="button">
+              <button ng-click="lrsListCtrl.import()" 
+                ng-disabled="!lrsListCtrl.importFileContent"
+                class="btn btn-default" 
+                type="button">
                 <span class="glyphicon glyphicon-import"></span> Import
               </button>
             </span>

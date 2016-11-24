@@ -1,9 +1,10 @@
 import lrsListTemplate from './lrs-list.html';
 
 class LRSListCtrl {
-  constructor($scope, $window, xAPI, storageHelper, confirmationHelper) {
+  constructor($q, $scope, $window, xAPI, storageHelper, confirmationHelper) {
     'ngInject';
 
+    this.$q = $q;
     this.$scope = $scope;
     this.$window = $window;
     this.xAPI = xAPI;
@@ -52,15 +53,15 @@ class LRSListCtrl {
   }
 
   import() {
-    let contentJSON;
-    try {
-      contentJSON = JSON.parse(this.importFileContent);
-    } catch (e) {
-      alert('Error on parsing JSON from import file: ' + e);
-      return;
-    }
-    this.xAPI.LRS.import(contentJSON);
-    this.onListChange();
+    this.$q.when()
+      .then(() => JSON.parse(this.importFileContent))
+      .then(contentJSON => {
+        this.xAPI.LRS.import(contentJSON);
+        this.onListChange();
+      })
+      .catch(() => {
+        this.confirmationHelper.confirmError('Choose valid json import file');
+      });
   }
 }
 

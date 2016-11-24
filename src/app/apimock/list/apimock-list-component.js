@@ -1,9 +1,10 @@
 import listTemplate from './list.html';
 
 class ApimockListCtrl {
-  constructor($scope, apimockService, confirmationHelper) {
+  constructor($q, $scope, apimockService, confirmationHelper) {
     'ngInject';
 
+    this.$q = $q;
     this.$scope = $scope;
     this.apimockService = apimockService;
     this.confirmationHelper = confirmationHelper;
@@ -36,8 +37,14 @@ class ApimockListCtrl {
   }
 
   import() {
-    const importResult = this.apimockService.import(this.importFileContent);
-    this.list = importResult || [];
+    this.$q.when()
+      .then(() => this.apimockService.import(this.importFileContent))
+      .then(importResult => {
+        this.list = importResult || [];
+      })
+      .catch(() => {
+        this.confirmationHelper.confirmError('Choose valid json import file');
+      });
   }
 }
 

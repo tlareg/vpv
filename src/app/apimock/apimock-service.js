@@ -88,8 +88,7 @@ export default class ApimockService {
     try {
       contentJSON = JSON.parse(contentStr);
     } catch (e) {
-      alert('Error on parsing JSON from import file: ' + e);
-      return;
+      throw new Error('import file json parsing error')
     }
     this.list = contentJSON;
     this.onListChange();
