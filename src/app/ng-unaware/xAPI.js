@@ -12,7 +12,7 @@ class LRS {
       'password',
       'xAPIVersion',
       'httpBasicAuth'
-    ].reduce((acc, propName) => { 
+    ].reduce((acc, propName) => {
       if (lrs[propName]) {
         acc[propName] = lrs[propName];
       }
@@ -29,7 +29,7 @@ class LRS {
       guid: getGuid(),
     }, LRS.export(lrs));
 
-    this.url = typeof this.url === 'string' 
+    this.url = typeof this.url === 'string'
       ? (this.url.slice(-1) === '/' ? this.url.slice(0, -1) : this.url)
       : '';
 
@@ -48,8 +48,8 @@ class LRS {
       })
     })
       .then(response => response.json())
-      .then(json => json 
-        ? this.setStatements(json.statements) 
+      .then(json => json
+        ? this.setStatements(json.statements)
         : this.clearStatements()
       );
   }

@@ -1,7 +1,7 @@
 export default class StatementsCtrl {
   constructor(
-    $scope, 
-    xAPI, 
+    $scope,
+    xAPI,
     spinnerHelper,
     confirmationHelper
   ) {
@@ -14,15 +14,15 @@ export default class StatementsCtrl {
 
     this.lrsList = xAPI.LRS.export().list;
 
-    this._selectFirstLrs();    
-    
+    this._selectFirstLrs();
+
     this.statements = [];
     this.refreshStatements();
   }
 
   _selectFirstLrs() {
-    this.selectedLrsGuid = this.lrsList.length 
-      ? this.lrsList[0].guid 
+    this.selectedLrsGuid = this.lrsList.length
+      ? this.lrsList[0].guid
       : null;
   }
 

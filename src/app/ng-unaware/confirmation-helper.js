@@ -9,21 +9,21 @@ class ConfirmationHelper {
   constructor() {}
 
   confirmAction() {
-    return swal(Object.assign({
+    return swal(Object.assign({}, defaultSwalConfig, {
       title: 'Are you sure?',
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes',
       cancelButtonText: 'No'
-    }, defaultSwalConfig));
+    }));
   }
 
   confirmError(title) {
-    return swal(Object.assign({
+    return swal(Object.assign({}, defaultSwalConfig, {
       title: title || 'Error',
       type: 'error',
       confirmButtonText: 'OK'
-    }, defaultSwalConfig));
+    }));
   }
 }
 
