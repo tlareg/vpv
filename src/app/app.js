@@ -53,5 +53,5 @@ export default angular
     controller: AppCtrl,
     controllerAs: 'appCtrl'
   })
-  
+
   .name;
