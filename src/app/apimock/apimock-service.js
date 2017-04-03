@@ -1,12 +1,13 @@
 import _ from 'lodash';
 
 export default class ApimockService {
-  constructor($window, guidService, storageHelper) {
+  constructor($window, guidService, storageHelper, fileHelper) {
     'ngInject';
 
     this.$window = $window;
     this.guidService = guidService;
     this.storageHelper = storageHelper;
+    this.fileHelper = fileHelper;
 
     this.list = [];
   }
@@ -67,9 +68,27 @@ export default class ApimockService {
       alert('Error on export: ' + e);
       return;
     }
-    const url = 'data:text/json;charset=utf8,' + encodeURIComponent(urlData);
+    const url = 'data:application/octet-stream;charset=utf8,' + encodeURIComponent(urlData);
     this.$window.open(url, '_blank');
     this.$window.focus();
+  }
+
+  export() {
+    let apimockExportObj = this.getListForExport();
+    let fileContent = ''
+
+    try {
+      fileContent = JSON.stringify(apimockExportObj);
+    } catch(e) {
+      alert('Error on export: ' + e);
+      return;
+    }
+
+    this.fileHelper.triggerFileDownload({
+      fileName: 'apimock_export.json',
+      contentType: 'application/json',
+      content: fileContent
+    })
   }
 
   getListForExport() {

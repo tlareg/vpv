@@ -1,7 +1,15 @@
 import lrsListTemplate from './lrs-list.html';
 
 class LRSListCtrl {
-  constructor($q, $scope, $window, xAPI, storageHelper, confirmationHelper) {
+  constructor(
+    $q,
+    $scope,
+    $window,
+    xAPI,
+    storageHelper,
+    confirmationHelper,
+    fileHelper
+  ) {
     'ngInject';
 
     this.$q = $q;
@@ -10,6 +18,7 @@ class LRSListCtrl {
     this.xAPI = xAPI;
     this.storageHelper = storageHelper;
     this.confirmationHelper = confirmationHelper;
+    this.fileHelper = fileHelper;
 
     this.refreshList();
   }
@@ -36,16 +45,21 @@ class LRSListCtrl {
   }
 
   export() {
-    let urlData = this.xAPI.LRS.export();
+    let lrsExportObj = this.xAPI.LRS.export();
+    let fileContent = '';
+
     try {
-      urlData = JSON.stringify(urlData);
+      fileContent = JSON.stringify(lrsExportObj);
     } catch(e) {
       alert('Error on export: ' + e);
       return;
     }
-    const url = 'data:text/json;charset=utf8,' + encodeURIComponent(urlData);
-    this.$window.open(url, '_blank');
-    this.$window.focus();
+
+    this.fileHelper.triggerFileDownload({
+      fileName: 'lrs_export.json',
+      contentType: 'application/json',
+      content: fileContent
+    })
   }
 
   onReadImportFile(fileContent) {

@@ -5,54 +5,64 @@
       <h1 class="col-sm-3 vpv-view-title">LRS list</h1>
       <div class="col-sm-9" style="padding-top: 20px;">
         <div class="pull-right">
+
           <button class="btn btn-default" ui-sref="lrs.form({ guid: '' })">
             <span class="glyphicon glyphicon-plus"></span> Add
           </button>
+
           <button class="btn btn-default" ng-click="lrsListCtrl.export()">
             <span class="glyphicon glyphicon-export"></span> Export
           </button>
+
           <div class="input-group" style="width: 300px; float: right; margin-left: 5px;">
             <input on-read-file="lrsListCtrl.onReadImportFile($fileContent)"
               type="file"
               class="form-control">
             <span class="input-group-btn">
-              <button ng-click="lrsListCtrl.import()" 
+              <button ng-click="lrsListCtrl.import()"
                 ng-disabled="!lrsListCtrl.importFileContent"
-                class="btn btn-default" 
+                class="btn btn-default"
                 type="button">
                 <span class="glyphicon glyphicon-import"></span> Import
               </button>
             </span>
           </div>
+
         </div>
       </div>
     </div>
 
     <div>
-      <ul class="vpv-list vpv-list-flex"> 
+      <ul class="vpv-list vpv-list-flex">
         <li
           class="vpv-list-item"
           ng-repeat="lrs in lrsListCtrl.list">
+
           <div class="vpv-list-item__pair row">
             <div class="vpv-list-item__key col-sm-3">Name</div>
             <div class="vpv-list-item__value col-sm-9">{{lrs.name}}</div>
           </div>
+
           <div class="vpv-list-item__pair row">
             <div class="vpv-list-item__key col-sm-3">URL</div>
             <div class="vpv-list-item__value col-sm-9">{{lrs.url}}</div>
           </div>
+
           <div class="vpv-list-item__pair row">
             <div class="vpv-list-item__key col-sm-3">Username</div>
             <div class="vpv-list-item__value col-sm-9">{{lrs.username}}</div>
           </div>
+
           <div class="vpv-list-item__pair row">
             <div class="vpv-list-item__key col-sm-3">Password</div>
             <div class="vpv-list-item__value col-sm-9">{{lrs.password}}</div>
           </div>
+
           <div class="vpv-list-item__pair row">
             <div class="vpv-list-item__key col-sm-3">xAPI Version</div>
             <div class="vpv-list-item__value col-sm-9">{{lrs.xAPIVersion}}</div>
           </div>
+
           <div class="vpv-list-item__actions">
             <button ui-sref="lrs.form({ guid: lrs.guid })"
               class="btn">
@@ -64,6 +74,7 @@
               <span class="glyphicon glyphicon-trash"></span> Remove
             </button>
           </div>
+
         </li>
       </ul>
     </div>

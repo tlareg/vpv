@@ -18,10 +18,11 @@ import apimockModule from './apimock/apimock-module';
 import lrsModule from './lrs/lrs-module';
 import statementsModule from './statements/statements-module';
 
-import xAPI from './ng-unaware/xAPI';
-import storageHelper from './ng-unaware/storage-helper';
-import spinnerHelper from './ng-unaware/spinner-helper';
-import confirmationHelper from './ng-unaware/confirmation-helper';
+import xAPI from './framework-agnostic/xAPI';
+import storageHelper from './framework-agnostic/storage-helper';
+import spinnerHelper from './framework-agnostic/spinner-helper';
+import confirmationHelper from './framework-agnostic/confirmation-helper';
+import fileHelper from './framework-agnostic/file-helper';
 
 (function init_xAPI() {
   xAPI.LRS.import(storageHelper.get('xAPI.LRSList'));
@@ -47,6 +48,7 @@ export default angular
   .constant('storageHelper', storageHelper)
   .constant('spinnerHelper', spinnerHelper)
   .constant('confirmationHelper', confirmationHelper)
+  .constant('fileHelper', fileHelper)
 
   .component('app', {
     template: appTemplate,
