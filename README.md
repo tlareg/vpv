@@ -11,15 +11,15 @@ See [DEMO](https://tlareg.github.io/vpv)
 2. Install [node-gyp](https://github.com/nodejs/node-gyp)
 
     ```sh
-    yarn global add node-gyp
-    yarn global add --production windows-build-tools
+    $ yarn global add node-gyp
+    $ yarn global add --production windows-build-tools
     ```
     
-3. Install node modules ``` yarn install ```
+3. Install node modules ``` $ yarn install ```
 
-4. Run webpack-dev-server for **development** ``` yarn run dev ```
+4. Run webpack-dev-server for **development** ``` $ yarn run dev ```
 
-5. Build for **production** ``` yarn run build ```
+5. Build for **production** ``` $ yarn run build ```
 
 ## Integration tips
 
