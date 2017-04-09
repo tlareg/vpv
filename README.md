@@ -37,6 +37,8 @@ See [DEMO](https://tlareg.github.io/vpv)
   - change max execution time - in ```xampp/php/php.ini``` set ```max_execution_time=300```
   - change upload max filesize - in ```xampp/php/php.ini``` set ```upload_max_filesize=10M```
 - open in browser ```host/ol/www``` and go through installation wizard
+- run ```composer install``` in project root directory
+- run ```php vendor/robmorgan/phinx/bin/phinx init``` (```php vendor/bin/phinx migrate``` wont work on Windows - see [this](https://github.com/robmorgan/phinx/issues/360#issuecomment-63954136))
 
 ### [Learning Locker](https://github.com/LearningLocker/learninglocker) installation (on Windows)
 
